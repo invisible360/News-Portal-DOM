@@ -14,9 +14,22 @@ const loadData = async () => {
 }
 
 const category = async () => {
-    
     const dataRecv = await loadData ();
-    console.log(dataRecv);
+
+    const categoryContainer = document.getElementById ('category-container');
+    categoryContainer.innerHTML = ``;
+
+    dataRecv.forEach(category => {
+        // console.log(category);
+        const {category_name} = category // destructuring
+        // console.log(category_name);
+        const li = document.createElement ('li');
+        li.innerHTML = `
+        <a>${category_name}</a>
+        `
+        categoryContainer.appendChild (li);
+    });
+    // console.log(dataRecv);
 }
 
 category ();
