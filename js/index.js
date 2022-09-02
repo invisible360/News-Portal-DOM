@@ -55,28 +55,24 @@ const clickedCategory = async (id, catName) => {
     const newsLength = individualCategory.length;
     findingMsg(newsLength, catName);
 
-    console.log(individualCategory);
+    // console.log(individualCategory);
 
     const newsContainer = document.getElementById('news-container');
+    newsContainer.innerHTML = ``
 
     individualCategory.forEach(infoToDisplay => {
         // console.log(element);
         const { title, details, thumbnail_url, total_view, author } = infoToDisplay;
-        const { name, published_date, img } = author;
+        const { name:authorName, published_date, img } = author;
 
         const div = document.createElement ('div');
         div.innerHTML = `
-        <div class="card lg:card-side bg-base-100 drop-shadow-2xl">
+        <div class="card lg:card-side bg-base-100 drop-shadow-2xl my-5">
         <figure><img class="p-5 object-contain h-full w-96"
-                src="https://i.ibb.co/QnwC4sG/unsplash-Eh-Tc-C9s-YXsw-11.png" alt="Album"></figure>
+                src=${thumbnail_url} alt="Album"></figure>
         <div class="card-body">
-            <h2 class="card-title">New album is released!</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga officia minus, ducimus voluptatibus
-                magnam minima quaerat quisquam nostrum deserunt cum architecto obcaecati nihil, voluptatem ipsa
-                consectetur accusamus? Esse alias distinctio necessitatibus sit deserunt quasi molestiae,
-                explicabo
-                impedit suscipit, vel ullam! Tempora inventore nihil corrupti, fugiat quo corporis in mollitia
-                dolor.</p>
+            <h2 class="card-title">${title}</h2>
+            <p>${details.slice (0, 200)+'...'}</p>
 
             <div class="flex-none lg:flex items-center justify-between mt-5 lg:mt-0">
                 <div class="flex lg:flex-none items-center justify-between">
@@ -85,19 +81,19 @@ const clickedCategory = async (id, catName) => {
                             <div class="avatar">
                                 <div class="w-14 rounded-full">
                                     <img
-                                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" />
+                                        src=${img} />
                                 </div>
                             </div>
                             <div class="flex flex-col mx-3">
-                                <p class="text-sm lg:text-base">Jane Cooper</p>
-                                <p class="text-xs text-slate-500">Jan 10, 2022</p>
+                                <p class="text-sm lg:text-base">${authorName === 'system' ? 'Name not found': authorName}</p>
+                                <p class="text-xs text-slate-500">${published_date}</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex items-center ml-0 lg:ml-10">
                         <i class="fa-regular fa-eye"></i>
-                        <p class="mx-1 font-bold">1.5M</p>
+                        <p class="mx-1 font-bold">${total_view}</p>
                     </div>
                 </div>
 
@@ -119,6 +115,8 @@ const clickedCategory = async (id, catName) => {
         </div>
     </div>
         `
+
+        newsContainer.appendChild (div)
     });
 
 
