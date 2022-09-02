@@ -3,12 +3,23 @@ const loadData = async () => {
 
     try {
         const res = await fetch (url);
-        const data = await res.json ();
-        // console.log(data.data.news_category);
+        const resData = await res.json ();
+        // console.log(resData.data.news_category);
+        const data = resData.data.news_category;
         return data;
     }
     catch (error) {
         console.log(error);
     }
 }
-loadData ();
+
+const category = async () => {
+    
+    const dataRecv = await loadData ();
+    console.log(dataRecv);
+}
+
+category ();
+
+
+// loadData ();
