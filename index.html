@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -7,13 +7,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lates News</title>
 
+    <link rel="stylesheet" href="customcss/style.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/777a9ab6cb.js" crossorigin="anonymous"></script>
+
     <!-- DaisyUi+tailwind CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
+    <!-- Navigation Starts -->
+    <nav class="mx-auto w-[90%]">
+        <div class="navbar bg-base-700 pb-10">
+            <div class="flex-1">
+                <a href="" class="text-2xl font-bold text-indigo-700 py-3"><span
+                        class="text-white bg-indigo-700 rounded-sm p-2">Latest </span> <span
+                        class="px-2">News</span></a>
+            </div>
 
+            <div class="flex-none">
+                <ul class="menu menu-horizontal p-0">
+                    <li><a class="font-semibold">News</a></li>
+                    <li><a>Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="flex-none gap-2">
+                <div class="dropdown dropdown-end">
+                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                            <img src="image/inv.jpg" />
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <hr class="bg-slate-300">
+    </nav>
+    <!-- Navigation Ends -->
+
+    <!-- Category Section Stars -->
+    <header class="mx-auto w-[80%]">
+        <section>
+            <ul class=" menu bg-base-100 flex flex-col lg:flex-row items-center justify-around py-5">
+                <li><a>Item 1</a></li>
+                <li><a>Item 2</a></li>
+                <li><a>Item 3</a></li>
+                <li><a>Item 3</a></li>
+                <li><a>Item 3</a></li>
+                <li><a>Item 3</a></li>
+            </ul>
+        </section>
+
+        <section class="hidden">
+            <div class="bg-slate-100 p-5">
+                <p class="font-semibold">4 items found for category Entertainment</p>
+            </div>
+        </section>
+
+        <section class="hidden">
+            <div class="py-5 flex-none lg:flex items-center justify-between">
+                <div class="flex items-center justify-around">
+                    <p class="px-3">Sort By View:</p>
+                    <select class="select select-bordered select-sm max-w-xs">
+                        <option selected>Default</option>
+                        <option disabled>Auhtor</option>
+                        <option disabled>Ratings</option>
+                        <option disabled>Date</option>
+                    </select>
+                </div>
+
+                <div class="py-5 lg:py-0 flex lg:flex-row flex-col items-center justify-around ">
+                    <button class="btn btn-active btn-primary my-3 lg:my-0 lg:mx-3">Today's Peak</button>
+                    <button class="btn btn-outline btn-primary">Trending</button>
+                </div>
+            </div>
+        </section>
+    </header>
+    <!-- Category Section Ends -->
+
+    <!--Main Body Stars -->
+    <main class="hidden mx-auto w-[80%] py-5">
+        <div class="card lg:card-side bg-base-100 drop-shadow-2xl">
+            <figure><img class="p-5 object-contain h-full w-96"
+                    src="https://i.ibb.co/QnwC4sG/unsplash-Eh-Tc-C9s-YXsw-11.png" alt="Album"></figure>
+            <div class="card-body">
+                <h2 class="card-title">New album is released!</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga officia minus, ducimus voluptatibus
+                    magnam minima quaerat quisquam nostrum deserunt cum architecto obcaecati nihil, voluptatem ipsa
+                    consectetur accusamus? Esse alias distinctio necessitatibus sit deserunt quasi molestiae, explicabo
+                    impedit suscipit, vel ullam! Tempora inventore nihil corrupti, fugiat quo corporis in mollitia
+                    dolor.</p>
+
+                <div class="flex-none lg:flex items-center justify-between mt-5 lg:mt-0">
+                    <div class="flex lg:flex-none items-center justify-between">
+                        <div>
+                            <div class="flex sm:flex-col lg:flex-row items-center justify-center">
+                                <div class="avatar">
+                                    <div class="w-14 rounded-full">
+                                        <img
+                                            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" />
+                                    </div>
+                                </div>
+                                <div class="flex flex-col mx-3">
+                                    <p class="text-sm lg:text-base">Jane Cooper</p>
+                                    <p class="text-xs text-slate-500">Jan 10, 2022</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center ml-0 lg:ml-10">
+                            <i class="fa-regular fa-eye"></i>
+                            <p class="mx-1 font-bold">1.5M</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-5 lg:mt-0">
+                        <div class="ml-0 lg:-ml-44">
+                            <i class="fa-regular fa-star-half-stroke"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <!--Main Body Ends -->
+
+    <!-- footer starts -->
+    <footer class="hidden footer footer-center p-4 bg-base-100 text-base-content mt-10">
+        <div>
+            <p>Copyright © 2022 - Latest News</p>
+        </div>
+    </footer>
+    <!-- footer ends -->
+
+
+
+    <script src="js/index.js"></script>
 </body>
 
 </html>
