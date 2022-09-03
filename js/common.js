@@ -104,7 +104,6 @@ const openDetails = async (newsId) => {
     `
 }
 
-
 const findingMsg = (len, catName) => {
     const numberOfNewsfind = document.getElementById('find-news');
     numberOfNewsfind.innerHTML = `
