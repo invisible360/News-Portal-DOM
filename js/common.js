@@ -1,12 +1,12 @@
 const dynamicCard = (catagory) => {
 
-    display ();
+    display();
 
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = ``;
 
     catagory.forEach(infoToDisplay => {
-        const { title, details, thumbnail_url, total_view, author } = infoToDisplay;
+        const { title, details, thumbnail_url, total_view, author, _id: newsId } = infoToDisplay;
         const { name: authorName, published_date, img } = author;
 
         const div = document.createElement('div');
@@ -50,9 +50,11 @@ const dynamicCard = (catagory) => {
                         <i class="fa-regular fa-star"></i>
                     </div>
 
-                    <div>
-                        <i class="fa-solid fa-arrow-right"></i>
+                    <div onclick="openDetails ('${newsId}')">
+                        <label for="my-modal-6" class="btn modal-button"><i class="fa-solid fa-arrow-right"></i></label>
+                       
                     </div>
+                    
                 </div>
             </div>
 
@@ -61,6 +63,50 @@ const dynamicCard = (catagory) => {
         `
         newsContainer.appendChild(div)
     });
+}
+
+const openDetails = async (newsId) => {
+    // console.log(newsId);
+    const newsData = await loadDetailNews(newsId);
+    const modalContainer = document.getElementById('modal');
+    modalContainer.innerHTML = `
+    <div class="modal-box">
+        <img src=${newsData.image_url} alt="">
+        <h3 class="font-bold text-lg">${newsData.title}</h3>
+        <p class="py-4">${newsData.details.slice(0, 200) + '...'}</p>
+        
+        <div class="flex justify-evenly items-center">
+                <div class ="flex items-center my-5">
+                <div class="avatar">
+                    <div class="w-14 rounded-full">
+                        <img
+                            src='${newsData.author.name === 'system' || newsData.author.name === '' || newsData.author.name === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png' : newsData.author.img}' />
+                    </div>
+                </div>
+                <div class="flex flex-col mx-3">
+                    <p class="text-sm lg:text-base">${newsData.author.name === 'system' || newsData.author.name === '' || newsData.author.name === null ? 'Not Available' : newsData.author.name}</p>
+                    <p class="text-xs text-slate-500">${newsData.author.published_date === null ? 'Not Available' : newsData.author.published_date}</p>
+                </div>
+            </div>
+
+
+            
+                <p class = "text-sm"> &#8226; <span class="font-semibold">Today's Pick:</span> ${newsData.others_info.is_todays_pick === false ? 'No' : 'Yes'}</p>
+                <p class = "text-sm"> &#8226; <span class="font-semibold">Trending:</span> ${newsData.others_info.is_trending === false ? 'No' : 'Yes'}</p>
+            
+        </div>
+        
+        <div class = "flex justify-between my-3">
+        <p><span class="font-semibold">Ratings: </span>${newsData.rating.number} (${newsData.rating.badge})</p>
+        <p><span><i class="fa-regular fa-eye"></i> </span><span class="font-semibold">${newsData.total_view === null  ? 'Not Available' : newsData.total_view}</span></p>
+        </div>
+
+
+        <div class="modal-action">
+            <label for="my-modal-6" class="btn">Okay</label>
+        </div>
+    </div>
+    `
 }
 
 
@@ -74,7 +120,7 @@ const findingMsg = (len, catName) => {
 }
 
 const errorFetchMsg = () => {
-    document.getElementById ('error-msg').classList.remove ('hidden')
+    document.getElementById('error-msg').classList.remove('hidden')
 }
 
 const display = () => {

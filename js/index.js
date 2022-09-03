@@ -11,7 +11,7 @@ const loadCategoryData = async () => {
     }
     catch (error) {
         document.getElementById('sort').classList.add ('hidden')
-        errorFetchMsg ();
+        errorFetchMsg ();//fetching error message 
     }
 }
 // news fetching accoording to id
@@ -23,8 +23,24 @@ const loadIndividualCategoryNews = async (id) => {
         return data.data;
     }
     catch (error) {
+        errorFetchMsg ();//fetching error message
+    }
+}
+
+//fetching details api
+const loadDetailNews = async (newsId) => {
+    const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
+
+    try {
+        const res = await fetch (url);
+        const data = await res.json();
+        return data.data[0];
+
+    }
+    catch (error) {
         errorFetchMsg ();
     }
+
 }
 
 //display at first time
