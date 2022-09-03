@@ -47,23 +47,26 @@
         <hr class="bg-slate-300">
     </nav>
     <!-- Navigation Ends -->
-
+    
+    
     <!-- Category Section Stars -->
     <header class="mx-auto w-[80%]">
-        <section>
+        <section class="dis-none">
             <ul id="category-container"
-                class=" menu bg-base-100 flex flex-col lg:flex-row items-center justify-around py-5">
-                <!-- Dynamic List -->
+            class=" menu bg-base-100 flex flex-col lg:flex-row items-center justify-around py-5">
+            <!-- Dynamic List -->
             </ul>
         </section>
-
-        <section id="find-news" class="text-center">
+        
+        <!-- spinner -->
+        
+        <section id="find-news" class="dis-none text-center">
             <!-- <div class="bg-slate-100 p-5">
                 <p class="font-semibold">4 items found for category Entertainment</p>
             </div> -->
         </section>
-
-        <section>
+        
+        <section class="dis-none">
             <div class="py-5 flex-none lg:flex items-center justify-between">
                 <div class="flex items-center justify-around">
                     <p class="px-3">Sort By View:</p>
@@ -74,24 +77,28 @@
                         <option disabled>Date</option>
                     </select>
                 </div>
-
+                
                 <div class="py-5 lg:py-0 flex lg:flex-row flex-col items-center justify-around ">
                     <button class="btn btn-active btn-primary my-3 lg:my-0 lg:mx-3">Today's Peak</button>
                     <button class="btn btn-outline btn-primary">Trending</button>
                 </div>
             </div>
         </section>
+        
+        <section id="spinner" class="hidden mx-auto w-[50%] mt-24">
+            <progress class="progress w-full"></progress>
+        </section>
     </header>
     <!-- Category Section Ends -->
 
     <!--Main Body Stars -->
-    <main id="news-container" class="mx-auto w-[80%] py-5">
+    <main id="news-container" class="dis-none mx-auto w-[80%] py-5">
         <!-- dynamic cards -->
     </main>
     <!--Main Body Ends -->
 
     <!-- footer starts -->
-    <footer class="relative">
+    <footer class="dis-none relative">
         <div id="footer" class="footer footer-center p-4 bg-base-300 text-base-content mt-5">
             <p>Copyright © 2022 - Latest News</p>
         </div>

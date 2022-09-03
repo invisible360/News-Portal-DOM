@@ -1,15 +1,13 @@
 const dynamicCard = (catagory) => {
 
+    display ();
+
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = ``;
 
     catagory.forEach(infoToDisplay => {
-        // console.log(element);
         const { title, details, thumbnail_url, total_view, author } = infoToDisplay;
         const { name: authorName, published_date, img } = author;
-        // console.log(total_view);
-
-        // const div = dynamiCard(title, details, thumbnail_url, total_view, author, authorName, published_date, img);
 
         const div = document.createElement('div');
         div.innerHTML = `
@@ -73,4 +71,11 @@ const findingMsg = (len, catName) => {
         <p class="font-semibold"><span class = 'text-pink-600'>${len}</span> items found for category '${catName}'</p>
     </div>
     `
+}
+
+const display = () => {
+    const disNone = document.getElementsByClassName('dis-none');
+    for (const disNoneSingle of disNone) {
+        disNoneSingle.classList.remove('dis-none');
+    }
 }
