@@ -30,7 +30,7 @@ const dynamicCard = (catagory) => {
                             </div>
                             <div class="flex flex-col mx-3">
                                 <p class="text-sm lg:text-base">${authorName === 'system' || authorName === '' || authorName === null ? 'Not Available' : authorName}</p>
-                                <p class="text-xs text-slate-500">${published_date}</p>
+                                <p class="text-xs text-slate-500">${published_date === null ? 'Not Available' : published_date}</p>
                             </div>
                         </div>
                     </div>
