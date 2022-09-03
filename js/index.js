@@ -6,12 +6,12 @@ const loadCategoryData = async () => {
     try {
         const res = await fetch(url);
         const resData = await res.json();
-        // console.log(resData.data.news_category);
         const data = resData.data.news_category;
         return data;
     }
     catch (error) {
-        console.log(error);
+        document.getElementById('sort').classList.add ('hidden')
+        errorFetchMsg ();
     }
 }
 // news fetching accoording to id
@@ -23,7 +23,7 @@ const loadIndividualCategoryNews = async (id) => {
         return data.data;
     }
     catch (error) {
-        console.log(error);//function add korte hobe
+        errorFetchMsg ();
     }
 }
 
@@ -33,7 +33,7 @@ const category = async () => {
     document.getElementById('spinner').classList.remove('hidden');//spinner starts at the time of catergory loading
     const dataRecv = await loadCategoryData();
     display();
-
+    
     const categoryContainer = document.getElementById('category-container');
     dataRecv.forEach(category => {
         const { category_name, category_id } = category // destructuring
@@ -75,16 +75,16 @@ const clickedCategory = async (id, catName, catNumbers) => {
 
 
     document.getElementById('spinner').classList.remove('hidden');//spinner starts
-
+    
     const individualCategory = await loadIndividualCategoryNews(id);
-
+    
     const newsLength = individualCategory.length;
     findingMsg(newsLength, catName);
-
+    
     document.getElementById('news-container').classList.remove('hidden');
-
+    
     dynamicCard(individualCategory);
-
+    
     document.getElementById('spinner').classList.add('hidden'); // spinener stops
     
     // footer position fixed for no news in any category

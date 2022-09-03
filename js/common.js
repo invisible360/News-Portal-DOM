@@ -73,6 +73,10 @@ const findingMsg = (len, catName) => {
     `
 }
 
+const errorFetchMsg = () => {
+    document.getElementById ('error-msg').classList.remove ('hidden')
+}
+
 const display = () => {
     const disNone = document.getElementsByClassName('dis-none');
     for (const disNoneSingle of disNone) {

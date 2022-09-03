@@ -47,26 +47,30 @@
         <hr class="bg-slate-300">
     </nav>
     <!-- Navigation Ends -->
-    
-    
+
+
     <!-- Category Section Stars -->
+
+
+    <blockquote id="error-msg" class="hidden">
+        <div class="bg-red-400 p-5 text-center">
+                <p class="font-semibold text-white">Data Fetching Error!!!</p>
+            </div>
+    </blockquote>
+
     <header class="mx-auto w-[80%]">
         <section class="dis-none">
             <ul id="category-container"
-            class=" menu bg-base-100 flex flex-col lg:flex-row items-center justify-around py-5">
-            <!-- Dynamic List -->
+                class=" menu bg-base-100 flex flex-col lg:flex-row items-center justify-around py-5">
+                <!-- Dynamic List -->
             </ul>
         </section>
-        
-        <!-- spinner -->
-        
+
         <section id="find-news" class="dis-none text-center">
-            <!-- <div class="bg-slate-100 p-5">
-                <p class="font-semibold">4 items found for category Entertainment</p>
-            </div> -->
+
         </section>
-        
-        <section class="dis-none">
+
+        <section id="sort" class="dis-none">
             <div class="py-5 flex-none lg:flex items-center justify-between">
                 <div class="flex items-center justify-around">
                     <p class="px-3">Sort By View:</p>
@@ -77,14 +81,15 @@
                         <option disabled>Date</option>
                     </select>
                 </div>
-                
+
                 <div class="py-5 lg:py-0 flex lg:flex-row flex-col items-center justify-around ">
                     <button class="btn btn-active btn-primary my-3 lg:my-0 lg:mx-3">Today's Peak</button>
                     <button class="btn btn-outline btn-primary">Trending</button>
                 </div>
             </div>
         </section>
-        
+
+        <!-- spinner -->
         <section id="spinner" class="hidden mx-auto w-[50%] mt-24">
             <progress class="progress w-full"></progress>
         </section>
