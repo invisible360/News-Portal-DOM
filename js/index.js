@@ -10,8 +10,8 @@ const loadCategoryData = async () => {
         return data;
     }
     catch (error) {
-        document.getElementById('sort').classList.add ('hidden')
-        errorFetchMsg ();//fetching error message 
+        document.getElementById('sort').classList.add('hidden')
+        errorFetchMsg();//fetching error message 
     }
 }
 // news fetching accoording to id
@@ -23,7 +23,7 @@ const loadIndividualCategoryNews = async (id) => {
         return data.data;
     }
     catch (error) {
-        errorFetchMsg ();//fetching error message
+        errorFetchMsg();//fetching error message
     }
 }
 
@@ -32,13 +32,13 @@ const loadDetailNews = async (newsId) => {
     const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
 
     try {
-        const res = await fetch (url);
+        const res = await fetch(url);
         const data = await res.json();
         return data.data[0];
 
     }
     catch (error) {
-        errorFetchMsg ();
+        errorFetchMsg();
     }
 
 }
@@ -49,7 +49,7 @@ const category = async () => {
     document.getElementById('spinner').classList.remove('hidden');//spinner starts at the time of catergory loading
     const dataRecv = await loadCategoryData();
     display();
-    
+
     const categoryContainer = document.getElementById('category-container');
     dataRecv.forEach(category => {
         const { category_name, category_id } = category // destructuring
@@ -62,6 +62,7 @@ const category = async () => {
         categoryContainer.appendChild(li);
     });
 
+    // ===============================================================
     //By default Showing 'Breaking News'
     const defDesign = document.getElementById('news-' + dataRecv[0].category_id);
     defDesign.classList.add('font-semibold', 'border', 'bg-primary', 'text-white');
@@ -71,16 +72,18 @@ const category = async () => {
 
     display();
 
-    dynamicCard(defaultId);
+    //By default 'breaking news' page sorted
+    const sorted = sortingArrayOfObjects(defaultId);
+    dynamicCard(sorted);
 
-    document.getElementById('spinner').classList.add('hidden'); //spinner stops at the time of catergory loading
+    document.getElementById('spinner').classList.add('hidden'); //spinner stops at the time of catergory loading.
 }
 
 
 
 const clickedCategory = async (id, catName, catNumbers) => {
-    document.getElementById('news-container').classList.add('hidden');//at first hidden
 
+    // ===============================================================
     //removing default active category
     for (let i = 1; i <= catNumbers; i++) {
         document.getElementById('news-0' + i).classList.remove('font-semibold', 'border', 'bg-primary', 'text-white')
@@ -89,20 +92,24 @@ const clickedCategory = async (id, catName, catNumbers) => {
     const clickedDesign = document.getElementById('news-' + id);
     clickedDesign.classList.add('font-semibold', 'border', 'bg-primary', 'text-white');
 
-
+    // ===============================================================
+    //spinner start and at the same time main section on and off
+    document.getElementById('news-container').classList.add('hidden');//at first hidden
     document.getElementById('spinner').classList.remove('hidden');//spinner starts
-    
     const individualCategory = await loadIndividualCategoryNews(id);
-    
+
     const newsLength = individualCategory.length;
     findingMsg(newsLength, catName);
-    
-    document.getElementById('news-container').classList.remove('hidden');
-    
-    dynamicCard(individualCategory);
-    
+    document.getElementById('news-container').classList.remove('hidden');//then display:block
+
+    // ===============================================================
+    //sorting the array of objects accroding to views
+    const sort = sortingArrayOfObjects(individualCategory);
+
+    dynamicCard(sort); //appending div
     document.getElementById('spinner').classList.add('hidden'); // spinener stops
-    
+
+    // ===============================================================
     // footer position fixed for no news in any category
     if (newsLength === 0) {
         document.getElementById('footer').classList.add('fixed', 'bottom-0', 'left-0', 'right-0');

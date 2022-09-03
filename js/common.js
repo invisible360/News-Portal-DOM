@@ -1,11 +1,11 @@
 const dynamicCard = (catagory) => {
 
     display();
-
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = ``;
 
     catagory.forEach(infoToDisplay => {
+        // destructuring
         const { title, details, thumbnail_url, total_view, author, _id: newsId } = infoToDisplay;
         const { name: authorName, published_date, img } = author;
 
@@ -123,4 +123,11 @@ const display = () => {
     for (const disNoneSingle of disNone) {
         disNoneSingle.classList.remove('dis-none');
     }
+}
+
+const sortingArrayOfObjects = (arrOfObjs) => {
+    const sort = arrOfObjs.sort ((a,b) => {
+        return b.total_view - a.total_view;
+    });
+    return sort;
 }
