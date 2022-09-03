@@ -64,6 +64,7 @@ const clickedCategory = async (id, catName) => {
         // console.log(element);
         const { title, details, thumbnail_url, total_view, author } = infoToDisplay;
         const { name:authorName, published_date, img } = author;
+        console.log(total_view);
 
         const div = document.createElement ('div');
         div.innerHTML = `
@@ -81,11 +82,11 @@ const clickedCategory = async (id, catName) => {
                             <div class="avatar">
                                 <div class="w-14 rounded-full">
                                     <img
-                                        src=${img} />
+                                        src='${authorName === 'system' || authorName === '' || authorName === null ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png': img}' />
                                 </div>
                             </div>
                             <div class="flex flex-col mx-3">
-                                <p class="text-sm lg:text-base">${authorName === 'system' ? 'Name not found': authorName}</p>
+                                <p class="text-sm lg:text-base">${authorName === 'system' || authorName === '' || authorName === null ? 'Not Available': authorName}</p>
                                 <p class="text-xs text-slate-500">${published_date}</p>
                             </div>
                         </div>
@@ -93,7 +94,7 @@ const clickedCategory = async (id, catName) => {
 
                     <div class="flex items-center ml-0 lg:ml-10">
                         <i class="fa-regular fa-eye"></i>
-                        <p class="mx-1 font-bold">${total_view}</p>
+                        <p class="mx-1 font-bold">${total_view === null ? 'Unknown': total_view}</p>
                     </div>
                 </div>
 
