@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest News</title>
+
+    <link rel="stylesheet" href="customcss/style.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/777a9ab6cb.js" crossorigin="anonymous"></script>
+
+    <!-- DaisyUi+tailwind CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <!-- Navigation Starts -->
+    <nav class="mx-auto w-[90%]">
+        <div class="navbar bg-base-700 pb-10">
+            <div class="flex-1">
+                <a href="" class="text-2xl font-bold text-indigo-700 py-3"><span
+                        class="text-white bg-indigo-700 rounded-sm p-2">Latest </span> <span
+                        class="px-2">News</span></a>
+            </div>
+
+            <div class="flex-none">
+                <ul class="menu menu-horizontal p-0">
+                    <li><a href="index.html">News</a></li>
+                    <li><a href="#" class="font-semibold">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="flex-none gap-2">
+                <div>
+                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                            <img src="image/inv.jpg" />
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <hr class="bg-slate-300">
+    </nav>
+    <!-- Navigation Ends -->
+
+    <h1 class="mx-auto text-center text-5xl mt-5 font-extrabold">Q/A</h1>
+
+    <main class="mx-auto w-[90%]">
+        <section>
+            <div class="collapse mt-5 rounded-lg">
+                <input type="checkbox" class="peer" />
+                <div
+                    class="collapse-title bg-info text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+                    1. What is the Difference Between Var, Let and Const (Click - <i
+                        class="fa-solid fa-arrow-turn-down"></i>)
+                </div>
+                <div
+                    class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+                    <p><span class="underline underline-offset-4">Answer:</span> var variables can be updated and
+                        re-declared within its scope; let variables can be updated but not re-declared; const variables
+                        can neither be updated nor re-declared. They are all hoisted to the top of their scope. But
+                        while var variables are initialized with undefined , let and const variables are not
+                        initialized.</p>
+                </div>
+            </div>
+
+            <div class="collapse mt-5 rounded-lg">
+                <input type="checkbox" class="peer" />
+                <div
+                    class="collapse-title bg-info text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+                    2. What is the Difference Between Normal and Arrow Function (Click - <i
+                        class="fa-solid fa-arrow-turn-down"></i>)
+                </div>
+                <div
+                    class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+                    <p><span class="underline underline-offset-4">Answer:</span> Regular functions created using
+                        function declarations or expressions are constructible and callable. Since regular functions are
+                        constructible, they can be called using the new keyword. However, the arrow functions are only
+                        callable and not constructible, i.e arrow functions can never be used as constructor functions.
+                    </p>
+                </div>
+            </div>
+
+            <div class="collapse mt-5 rounded-lg">
+                <input type="checkbox" class="peer" />
+                <div
+                    class="collapse-title bg-info text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+                    3. What is the Differences among map, forEach filter, find? (Click - <i
+                        class="fa-solid fa-arrow-turn-down"></i>)
+                </div>
+                <div
+                    class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+                    <p><span class="underline underline-offset-4">Answer:</span> The main difference between forEach and
+                        filter is that forEach just loop over the array and executes the callback but filter executes
+                        the callback and check its return value. If the value is true element remains in the resulting
+                        array but if the return value is false the element will be removed for the resulting array.</p>
+                </div>
+            </div>
+
+            <div class="collapse mt-5 rounded-lg">
+                <input type="checkbox" class="peer" />
+                <div
+                    class="collapse-title bg-info text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+                    4. Why we use Template String? (Click - <i class="fa-solid fa-arrow-turn-down"></i>)
+                </div>
+                <div
+                    class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+                    <p><span class="underline underline-offset-4">Answer:</span> Template literals are sometimes
+                        informally called template strings, because they are used most commonly for string interpolation
+                        (to create strings by doing substitution of placeholders)</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+    <!-- footer starts -->
+    <footer class="dis-none relative">
+        <div id="footer"
+            class="fixed bottom-0 left-0 right-0 footer footer-center p-4 bg-base-300 text-base-content mt-5">
+            <p>Copyright © 2022 - Latest News</p>
+        </div>
+    </footer>
+    <!-- footer ends -->
+
+
+
+    <script src="js/index.js"></script>
+    <script src="js/common.js"></script>
+</body>
+
+</html>
