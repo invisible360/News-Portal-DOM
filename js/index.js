@@ -1,3 +1,4 @@
+// category name and id fetching
 const loadCategoryData = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`
 
@@ -14,6 +15,7 @@ const loadCategoryData = async () => {
     }
 }
 
+// news fetching accoording to id
 const loadIndividualCategoryNews = async (id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`
     try {
@@ -25,16 +27,15 @@ const loadIndividualCategoryNews = async (id) => {
         console.log(error);
     }
 }
-
+//display at first time
 const category = async () => {
     const dataRecv = await loadCategoryData();
-    console.log(dataRecv[0].category_id, dataRecv[0].category_name);
-    const categoryContainer = document.getElementById('category-container');
 
+    const categoryContainer = document.getElementById('category-container');
     dataRecv.forEach(category => {
         const { category_name, category_id } = category // destructuring
         const li = document.createElement('li');
-        li.setAttribute(`onclick`, `clickedCategory('${category_id}', '${category_name}')`);
+        li.setAttribute(`onclick`, `clickedCategory('${category_id}', '${category_name}', '${dataRecv.length}')`);
         li.setAttribute(`id`, `news-${category_id}`);
         li.innerHTML = `
         <a>${category_name}</a>
@@ -42,49 +43,43 @@ const category = async () => {
         categoryContainer.appendChild(li);
     });
 
-    document.getElementById('news-' + dataRecv[0].category_id).classList.add('font-semibold');
+    //By default Showing 'Breaking News'
+    const defDesign = document.getElementById('news-' + dataRecv[0].category_id);
+    defDesign.classList.add('font-semibold', 'border', 'bg-primary', 'text-white');
+
     const defaultId = await loadIndividualCategoryNews(dataRecv[0].category_id);
     findingMsg(defaultId.length, dataRecv[0].category_name);
 
-    dynamicCard (defaultId);
+    dynamicCard(defaultId);
 
 }
 
-const findingMsg = (len, catName) => {
-    const numberOfNewsfind = document.getElementById('find-news');
-    numberOfNewsfind.innerHTML = `
-    <div class="bg-slate-100 p-5">
-        <p class="font-semibold"><span class = 'text-pink-600'>${len}</span> items found for category '${catName}'</p>
-    </div>
-    `
-}
 
-const clickedCategory = async (id, catName) => {
+
+const clickedCategory = async (id, catName, catNumbers) => {
+    
+    //removing default active category
+    for (let i = 1; i <= catNumbers; i++) {
+
+        document.getElementById('news-0' + i).classList.remove('font-semibold', 'border', 'bg-primary', 'text-white')
+    }
+    const clickedDesign = document.getElementById('news-' + id);
+    clickedDesign.classList.add('font-semibold', 'border', 'bg-primary', 'text-white');
+
+
     const individualCategory = await loadIndividualCategoryNews(id);
-
     const newsLength = individualCategory.length;
     findingMsg(newsLength, catName);
 
-    // ekhane............
+    dynamicCard(individualCategory);
 
-    // console.log(individualCategory);
-
-    
-
-    dynamicCard (individualCategory);
-
-
+    // footer position fixed for no news in any category
     if (newsLength === 0) {
         document.getElementById('footer').classList.add('fixed', 'bottom-0', 'left-0', 'right-0');
     }
     else {
         document.getElementById('footer').classList.remove('fixed', 'bottom-0', 'left-0', 'right-0');
-
     }
-
-
-
-
 }
 
 

@@ -2,7 +2,7 @@ const dynamicCard = (catagory) => {
 
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = ``;
-    
+
     catagory.forEach(infoToDisplay => {
         // console.log(element);
         const { title, details, thumbnail_url, total_view, author } = infoToDisplay;
@@ -18,7 +18,7 @@ const dynamicCard = (catagory) => {
                 src=${thumbnail_url} alt="Album"></figure>
         <div class="card-body">
             <h2 class="card-title">${title}</h2>
-            <p>${details.slice(0, 200) + '...'}</p>
+            <p>${details.slice(0, 300) + '...'}</p>
 
             <div class="flex-none lg:flex items-center justify-between mt-5 lg:mt-0">
                 <div class="flex lg:flex-none items-center justify-between">
@@ -63,4 +63,14 @@ const dynamicCard = (catagory) => {
         `
         newsContainer.appendChild(div)
     });
+}
+
+
+const findingMsg = (len, catName) => {
+    const numberOfNewsfind = document.getElementById('find-news');
+    numberOfNewsfind.innerHTML = `
+    <div class="bg-slate-100 p-5">
+        <p class="font-semibold"><span class = 'text-pink-600'>${len}</span> items found for category '${catName}'</p>
+    </div>
+    `
 }
